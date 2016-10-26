@@ -1,5 +1,38 @@
 # MoonSmileFramework
+======================
 Dropwizard +Guice + Redis + Jobs + Guava
+
+### About
+
+[Dropwizard](http://dropwizard.io/) 1.0.2 [guice](https://github.com/google/guice) (4.1.0) integration.
+
+This is an REST service Framework using Dropwizard.
+It can help to build with [Gradle](https://gradle.org/) and auto build fat jar.
+Resource Auto Inject and Configure the DB WITH READ WRITE split.
+
+Features:
+* [Guice](https://github.com/google/guice) injector created on run phase
+* [Hikaricp](https://github.com/brettwooldridge/HikariCP) DataBase Pool Manager,Read From Config File Or From URL,Read Write Split
+* [Redis](http://redis.io/) redis config support ,to cache data with redis.
+* [Quartz](http://www.quartz-scheduler.org/) Schedule Job Support,help to do jobs in framework
+* [JWTAuth](https://jwt.io/) Json Web Token Auth Support,Custome Your Auth System
+* [Guava](https://github.com/google/guava) Google Help Libs with cache and events
+* [JDBI](http://www.jdbi.org/) DB Util Method to operate with mysql
+* [OkHttp](http://square.github.io/okhttp/) Use OKHTTP to Deal With HTTP(GET OR POST)
+
+### Setup
+
+#### The Project Use IDEA AND GRADLE
+1. General the idea project
+`gradlew idea`
+2. Build The Project to download libs
+`gradlew build`
+
+#### How to run the project
+1. Run/Debug Configuration,Select the Application
+2. Setting the vmoptions And Other MainClass,Module
+`-Ddropwizard.config=src/main/resources/cache_config.yml`
+3. Run
 
 # 基本信息
 这是一个很小的示例程序，主要是用来学习使用dropwizard框架。
@@ -57,4 +90,11 @@ Dropwizard +Guice + Redis + Jobs + Guava
 
 第一次打开该项目构建时，会进行相应的gradle文件下载，以及类库下载。
 
+License
+-------
 
+Copyright (c) 2016 KissFocus
+
+This library is licensed under the Apache License, Version 2.0.
+
+See http://www.apache.org/licenses/LICENSE-2.0.html or the LICENSE file in this repository for the full license text.ICENSE-2.0.html or the LICENSE file in this repository for the full license text.

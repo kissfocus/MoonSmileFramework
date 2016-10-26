@@ -8,6 +8,22 @@ clientconfig:
       - xx_tenant
       - xx_metadata
 
+redis:
+  # The redis server's address; required.
+  endpoint: 172.16.0.143:6379
+  # Auth password for redis server connection.  (default: null)
+  password: xwredis
+  # The minimum number of idle connections to maintain in the pool.  (default: 0)
+  minIdle: 0
+  # The maximum number of idle connections allowed in the pool.  (default: 0)
+  maxIdle: 0
+  # The maximum number of connections allowed in the pool.  (default: 1024)
+  maxTotal: 1924
+  # Enables SSL connection. (default: false)
+  ssl: false
+  # The configured timeout (in milliseconds) for redis connections in the connection pool.  (default: 2000)
+  timeout: 2000
+
 # Avoid using the default 8080 port for RESTFul services
 server:
    applicationConnectors:

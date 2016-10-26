@@ -42,17 +42,20 @@ public class PageObjectResource {
     public Response helloWorldSql() {
         DBI dbi = DBPoolCenter.getDBI("xx_metadata", DBPoolCenter.DBType.READ_WRITE);
         String sql = "SELECT * FROM pageaction;";
-        List<Map<String,Object>> result = DBExecutor.executeQuery(dbi, sql, null);
+        List<Map<String, Object>> result = DBExecutor.executeQuery(dbi, sql, null);
         return Response.ok(result).build();
     }
 
     @Path("redis")
     @GET
     public Response redisHello() {
-        Jedis jedis = RedisPoolCenter.getResource();
-        jedis.set("hello","crm");
-        jedis.incr("HelloCRM");
-        String result = jedis.get("HelloCRM") + jedis.get("hello");
+        String result;
+        try (Jedis jedis = RedisPoolCenter.getResource()) {
+            jedis.set("hello", "crm");
+            jedis.incr("HelloCRM");
+            result = jedis.get("HelloCRM") + jedis.get("hello");
+        }
+
         return Response.ok(result).build();
     }
 }

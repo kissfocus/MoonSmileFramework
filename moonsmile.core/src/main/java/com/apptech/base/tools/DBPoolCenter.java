@@ -51,9 +51,10 @@ public class DBPoolCenter {
                     .expireAfterWrite(10, TimeUnit.MINUTES)
                     .removalListener(notification -> {
                         LOGGER.info("Following data is being removed:" + notification.getKey());
-                        HikariDataSource dataSource = (HikariDataSource) notification.getValue();
-                        if (dataSource != null) {
-                            dataSource.close();
+                        try (HikariDataSource dataSource = (HikariDataSource) notification.getValue()) {
+                            if (dataSource != null) {
+                                dataSource.close();
+                            }
                         }
 
                         if (notification.getCause() == RemovalCause.EXPIRED) {
@@ -119,7 +120,7 @@ public class DBPoolCenter {
         return new DBI(dataSource);
     }
 
-    public static void close(){
+    public static void close() {
         dataSourceCache.cleanUp();
         configCache.cleanUp();
     }
