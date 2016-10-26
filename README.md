@@ -33,6 +33,11 @@ Features:
 2. Setting the vmoptions And Other MainClass,Module
 `-Ddropwizard.config=src/main/resources/cache_config.yml`
 3. Run
+![image](https://github.com/kissfocus/MoonSmileFramework/raw/master/doc/project-setting.png)
+
+In Resources Folder,It has an yml config file,need to config something like redis ,port
+Open the WebSite,`http://localhost:8081/pageobject/hello`
+
 
 # 基本信息
 这是一个很小的示例程序，主要是用来学习使用dropwizard框架。
