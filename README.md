@@ -20,6 +20,35 @@ Features:
 * [JDBI](http://www.jdbi.org/) DB Util Method to operate with mysql
 * [OkHttp](http://square.github.io/okhttp/) Use OKHTTP to Deal With HTTP(GET OR POST)
 
+### moonsmile.core
+It is the core frame wrapper with dropwizard and It has many useful method to help develop.
+* `FrameBridge` Use this to get the config or enviroment
+* `DBPoolCenter` Use this to manager the db pool and read write
+* `DBExecutor` Use this to help you to execute sql with mysql
+* `EncryptUtils` For Safety to save db password
+* `PBKDF2ForPasswordHash` Encrypt the user password to save into database
+* `RedisPoolCenter` To Connect redis use pool manager
+* `HttpManager` To send get or post method with http
+* `GeneralFormator` Convert JSON to Object OR Protobuf to json
+
+### moonsmile.cache
+Example Project
+It is compile with the moonsmile.core,And You can see how to use core method and service
+* Schedule Job with Quartz
+* Schedule Job To Save Into Redis
+* Read Data From Redis
+
+### moonsmile.rest
+Example Project
+It is compile with the moonsmile.core,And You can see how to use core method and service
+* Database Operate With DBCenter
+* Simple Say HelloWorld
+
+### moonsmile.setting
+Example Project
+It is compile with the moonsmile.core,And You can see how to use core method and service
+* Database Center Manager,Read DB Config From Url Or File
+
 ### Setup
 
 #### The Project Use IDEA AND GRADLE
