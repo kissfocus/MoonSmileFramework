@@ -1,0 +1,6 @@
+rootProject.name = 'MoonSmileFramework'
+include 'moonsmile.core'
+include 'moonsmile.rest'
+include 'moonsmile.setting'
+include 'moonsmile.cache'
+

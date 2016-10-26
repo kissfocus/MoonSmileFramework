@@ -1,0 +1,32 @@
+//plugins for project build
+plugins {
+    id "application"
+    id "us.kirchmeier.capsule" version "1.0.2"
+}
+
+//app main class
+mainClassName = "com.apptech.cache.CacheEngineService"
+
+dependencies {
+    compile project(':moonsmile.core')
+    compile libs.dropwizard_jobs_core
+
+}
+
+run {
+    systemProperty "dropwizard.config", "build/resources/main/cache_config.yml"
+}
+
+task fatCapsule(type: FatCapsule) {
+    applicationClass mainClassName
+    classifier = 'release'
+    reallyExecutable { trampolining() }
+    capsuleManifest {
+        systemProperties['dropwizard.config'] = 'cache_config.yml'
+        minJavaVersion = '1.8.0'
+    }
+}
+
+
+//if you need to package jar when build
+//build.dependsOn 'fatCapsule'

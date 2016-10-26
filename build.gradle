@@ -1,0 +1,73 @@
+// apply base
+apply plugin: 'base'
+apply plugin: 'idea'
+
+// project group and version
+allprojects  {
+    group = 'com.kissfocus'
+    version = '1.0'
+}
+
+// Dependency version
+ext.dropwizard_version = '1.0.2'
+
+// Debug Flag And Config For Env(develop,product)(true,false)
+ext.config_env = 'develop'
+ext.debug_flag = 'false'
+println "Current Env Config Using:$config_env"
+println "Current Env Debug Flag:$debug_flag"
+
+// Project Libs Define
+ext.libs = [
+        dropwizard_testing : "io.dropwizard:dropwizard-testing:$dropwizard_version",
+        dropwizard_client  : "io.dropwizard:dropwizard-client:$dropwizard_version",
+        junit              : 'junit:junit:4.12',
+
+        dropwizard_core    : "io.dropwizard:dropwizard-core:$dropwizard_version",
+        dropwizard_auth    : "io.dropwizard:dropwizard-auth:$dropwizard_version",
+        dropwizard_jdbi    : "io.dropwizard:dropwizard-jdbi:$dropwizard_version",
+        dropwizard_guice   : 'ru.vyarus:dropwizard-guicey:4.0.0',
+        dropwizard_protobuf: 'io.dropwizard.modules:dropwizard-protobuf:1.0.2-1',
+        dropwizard_gelf:   'net.gini.dropwizard:dropwizard-gelf:1.0.0-1',
+
+        jwt                : 'io.jsonwebtoken:jjwt:0.7.0',
+        protobuf           : 'com.google.protobuf:protobuf-java:3.1.0',
+        hikaricp           : 'com.zaxxer:HikariCP:2.5.1',
+        mysqldriver        : 'mysql:mysql-connector-java:6.0.4',
+        protobuf_format    : 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4',
+
+        zipkin_core        : 'com.smoketurner.dropwizard:zipkin-core:1.0.2-1',
+        zipkin_client      : 'com.smoketurner.dropwizard:zipkin-client:1.0.2-1',
+
+        simplecaptcha      : 'com.liferay:nl.captcha.simplecaptcha:1.1.1',
+
+        okhttp             : 'com.squareup.okhttp3:okhttp:3.4.1',
+        dropwizard_jobs_core    : 'de.spinscale:dropwizard-jobs-core:1.0.1',
+        jedis              : 'redis.clients:jedis:2.9.0'
+]
+
+// Sub Modules Setting
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile libs.junit
+    }
+
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
+}
+
+// Use the same gradle
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+}

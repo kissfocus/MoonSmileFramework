@@ -1,0 +1,23 @@
+
+// compile dependence
+dependencies {
+    compile libs.dropwizard_core
+    compile libs.dropwizard_auth
+    compile libs.dropwizard_guice
+    compile libs.dropwizard_protobuf
+    compile libs.dropwizard_gelf
+    compile libs.dropwizard_jdbi
+    compile libs.jwt
+
+    compile libs.protobuf_format
+    compile libs.hikaricp
+    compile libs.okhttp
+    compile libs.mysqldriver
+    compile libs.jedis
+}
+
+jar {
+    manifest {
+        attributes("Implementation-Title": "Gradle")
+    }
+}

@@ -1,0 +1,30 @@
+//plugins for project build
+plugins {
+    id "application"
+    id "us.kirchmeier.capsule" version "1.0.2"
+}
+
+//app main class
+mainClassName = "com.apptech.setting.CenterSettingService"
+
+dependencies {
+    compile project(':moonsmile.core')
+}
+
+run {
+    systemProperty "dropwizard.config", "build/resources/main/centersetting_config.yml"
+}
+
+task fatCapsule(type: FatCapsule) {
+    applicationClass mainClassName
+    classifier = 'release'
+    reallyExecutable { trampolining() }
+    capsuleManifest {
+        systemProperties['dropwizard.config'] = 'centersetting_config.yml'
+        minJavaVersion = '1.8.0'
+    }
+}
+
+
+//if you need to package jar when build
+//build.dependsOn 'fatCapsule'

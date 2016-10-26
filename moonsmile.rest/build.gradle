@@ -1,0 +1,31 @@
+//plugins for project build
+plugins {
+    id "application"
+    id "com.google.protobuf" version "0.8.0"
+    id "us.kirchmeier.capsule" version "1.0.2"
+}
+
+//app main class
+mainClassName = "com.apptech.rest.MetaEngineService"
+
+dependencies {
+    compile project(':moonsmile.core')
+}
+
+run {
+    systemProperty "dropwizard.config", "build/resources/main/metaengine_config.yml"
+}
+
+task fatCapsule(type: FatCapsule) {
+    applicationClass mainClassName
+    classifier = 'release'
+    reallyExecutable { trampolining() }
+    capsuleManifest {
+        systemProperties['dropwizard.config'] = 'metaengine_config.yml'
+        minJavaVersion = '1.8.0'
+    }
+}
+
+
+//if you need to package jar when build
+//build.dependsOn 'fatCapsule'
